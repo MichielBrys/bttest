@@ -24,19 +24,21 @@ enum _DeviceAvailability {
 class _DeviceWithAvailability extends BluetoothDevice {
   BluetoothDevice device;
   _DeviceAvailability availability;
-  int rssi;
+  int? rssi;
 
-  _DeviceWithAvailability(this.device, this.availability, [this.rssi]);
+  _DeviceWithAvailability(this.device, this.availability, [this.rssi]) : super(address: "abc");
 }
 
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
-  List<_DeviceWithAvailability> devices = List<_DeviceWithAvailability>();
+  List<_DeviceWithAvailability> devices = <_DeviceWithAvailability>[];
 
   // Availability
   StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
   bool _isDiscovering;
 
-  _SelectBondedDevicePage();
+  _SelectBondedDevicePage()
+      : _discoveryStreamSubscription = StreamController<BluetoothDiscoveryResult>().stream.listen((_) {}),
+        _isDiscovering = false;
 
   @override
   void initState() {
@@ -84,7 +86,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
           var _device = i.current;
           if (_device.device == r.device) {
             _device.availability = _DeviceAvailability.yes;
-            _device.rssi = r.rssi;
+            _device.rssi = r.rssi ?? 0;
           }
         }
       });
@@ -100,7 +102,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
   @override
   void dispose() {
     // Avoid memory leak (`setState` after dispose) and cancel discovery
-    _discoveryStreamSubscription?.cancel();
+    _discoveryStreamSubscription.cancel();
 
     super.dispose();
   }
@@ -110,11 +112,11 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
     List<BluetoothDeviceListEntry> list = devices
         .map((_device) => BluetoothDeviceListEntry(
               device: _device.device,
-              rssi: _device.rssi,
+              rssi: _device.rssi ?? 0,
               enabled: _device.availability == _DeviceAvailability.yes,
               onTap: () {
                 Navigator.of(context).pop(_device.device);
-              },
+              }, onLongPress: () {  },
             ))
         .toList();
     return Scaffold(

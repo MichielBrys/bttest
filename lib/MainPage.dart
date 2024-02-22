@@ -32,7 +32,8 @@ class _MainPage extends State<MainPage> {
 
     Future.doWhile(() async {
       // Wait if adapter not enabled
-      if (await FlutterBluetoothSerial.instance.isEnabled) {
+      final isEnabled = await FlutterBluetoothSerial.instance.isEnabled;
+      if (isEnabled != null && isEnabled) {
         return false;
       }
       await Future.delayed(Duration(milliseconds: 0xDD));
@@ -41,14 +42,15 @@ class _MainPage extends State<MainPage> {
       // Update the address field
       FlutterBluetoothSerial.instance.address.then((address) {
         setState(() {
-          _address = address;
+          _address = address!;
         });
       });
     });
 
+
     FlutterBluetoothSerial.instance.name.then((name) {
       setState(() {
-        _name = name;
+        _name = name!;
       });
     });
 
@@ -108,7 +110,7 @@ class _MainPage extends State<MainPage> {
             ListTile(
               title: const Text('Bluetooth status'),
               subtitle: Text(_bluetoothState.toString()),
-              trailing: RaisedButton(
+              trailing: ElevatedButton(
                 child: const Text('Settings'),
                 onPressed: () {
                   FlutterBluetoothSerial.instance.openSettings();
@@ -127,11 +129,10 @@ class _MainPage extends State<MainPage> {
             Divider(),
             ListTile(title: const Text('Devices discovery and connection')),
             ListTile(
-              title: RaisedButton(
+              title: ElevatedButton(
                 child: const Text('Connect to paired device to chat'),
                 onPressed: () async {
-                  final BluetoothDevice selectedDevice =
-                      await Navigator.of(context).push(
+                  final BluetoothDevice selectedDevice = await Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
                         return SelectBondedDevicePage(checkAvailability: false);
@@ -140,11 +141,12 @@ class _MainPage extends State<MainPage> {
                   );
 
                   if (selectedDevice != null) {
-                    print('Connect -> selected ' + selectedDevice.address);
+                    if(selectedDevice.address != null) print('Connect -> selected ' + selectedDevice.address);
                     _startChat(context, selectedDevice);
                   } else {
                     print('Connect -> no device selected');
                   }
+
                 },
               ),
             ),
