@@ -1,0 +1,13 @@
+com.example.flutter_blue_app-jetified-annotation-experimental-1.1.0-0 C:\Users\brysm\.gradle\caches\transforms-3\634e01c5db074e378e6359a7e3755991\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.flutter_blue_app-jetified-window-1.0.0-beta04-1 C:\Users\brysm\.gradle\caches\transforms-3\7f24c526f4026597f6dee5bc5daafd7e\transformed\jetified-window-1.0.0-beta04\res
+com.example.flutter_blue_app-core-1.6.0-2 C:\Users\brysm\.gradle\caches\transforms-3\e45213ff6e56572f5f71c84ecbcdcac0\transformed\core-1.6.0\res
+com.example.flutter_blue_app-jetified-window-java-1.0.0-beta04-3 C:\Users\brysm\.gradle\caches\transforms-3\f0edbdbd9764ee33653cd6ef57a1bb1c\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.flutter_blue_app-debug-4 C:\Users\brysm\Desktop\bttest\bttest\android\app\src\debug\res
+com.example.flutter_blue_app-main-5 C:\Users\brysm\Desktop\bttest\bttest\android\app\src\main\res
+com.example.flutter_blue_app-pngs-6 C:\Users\brysm\Desktop\bttest\bttest\build\app\generated\res\pngs\debug
+com.example.flutter_blue_app-resValues-7 C:\Users\brysm\Desktop\bttest\bttest\build\app\generated\res\resValues\debug
+com.example.flutter_blue_app-rs-8 C:\Users\brysm\Desktop\bttest\bttest\build\app\generated\res\rs\debug
+com.example.flutter_blue_app-mergeDebugResources-9 C:\Users\brysm\Desktop\bttest\bttest\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.flutter_blue_app-mergeDebugResources-10 C:\Users\brysm\Desktop\bttest\bttest\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.flutter_blue_app-merged_res-11 C:\Users\brysm\Desktop\bttest\bttest\build\app\intermediates\merged_res\debug
+com.example.flutter_blue_app-packaged_res-12 C:\Users\brysm\Desktop\bttest\bttest\build\flutter_bluetooth_serial\intermediates\packaged_res\debug

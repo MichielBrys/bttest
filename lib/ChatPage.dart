@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -215,7 +216,15 @@ class _ChatPage extends State<ChatPage> {
 
     if (text.length > 0) {
       try {
-        connection.output.add(utf8.encode(text + "\r\n"));
+      int randomFontSize = Random().nextInt(31) + 20;
+
+      // Generate a random font color (RED, GREEN, BLUE, or WHITE)
+      List<String> fontColors = ['RED', 'GREEN', 'BLUE', 'WHITE'];
+      String randomFontColor = fontColors[Random().nextInt(fontColors.length)];
+
+      // Format the text into JSON structure with random values
+      String formattedText = '{"data": "$text", "font": "Font/arial.ttf", "font_size": 50, "font_colour": "$randomFontColor", "background_colour": "BLACK"}';
+        connection.output.add(utf8.encode(formattedText + "\r\n"));
         await connection.output.allSent;
 
         setState(() {
